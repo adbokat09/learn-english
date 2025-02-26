@@ -15,13 +15,11 @@ def set_user_from_session():
     g.user = User.query.filter_by(id=user_id).first()
 
 
-@bp.before_app_request
+@bp.before_request
 def auth_required():
     set_user_from_session()
     if not g.user:
         return jsonify({'error': 'Authentication required'}), 401
-
-
 
 @bp.route('/change-nickname', methods={'PATCH'})
 def change_nickname():

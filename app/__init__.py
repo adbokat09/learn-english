@@ -14,8 +14,10 @@ def create_app():
 
     from app.auth.views import bp as auth_bp
     from app.user.views import bp as user_bp
+    from app.word.views import bp as word_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(user_bp)
+    app.register_blueprint(word_bp)
 
     return app
